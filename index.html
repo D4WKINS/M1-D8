@@ -105,14 +105,14 @@
                 getTasksAsArray.push(newListItem.textContent)
                 ul.appendChild(newListItem)
                     newTaskInput.value = ''
-              
+              changeTaskBackgroundColor()
             }
 
       /* EXERCISE 6: 
                 Create a method "removeLast" which removes the last item from the task list
             */
 
-            removeLastBtn.addEventListener('click', ()=>{
+            removeLastBtn.addEventListener('click', () =>{
                 let li = document.querySelector('li:last-child');
                 ul.removeChild(li)
             })
@@ -144,14 +144,13 @@
                onchange event listener ad applies it as background to every list item
             */
 
-
+        // This function is called when change of color button is clicked
       const changeTaskBackgroundColor = function(){
             let colorPicker = document.getElementById('colorPicker').value
-            let li = document.querySelectorAll('#myTaskList li');
-            for(let i = 0; i < li.length; i++){ colorPicker.onchange = li[i].style.backgroundColor = colorPicker }
+            let li = document.querySelectorAll('#myTaskList li');//Returns all li elements in the ul list
+            li.forEach( item => {colorPicker.onchange = item.style.backgroundColor = colorPicker});
+            //For Each li element aka item {do this}
       }
-
-
 
       /* EXTRA */
 
