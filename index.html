@@ -49,17 +49,20 @@
       then press "Add new task"</span><br><br>
 
     <input type="text" id="newTask">
-    <input type="button" value="Add new Task" onclick="addNewTask()">
+    <input type="button" value="Add new Task" id="addTask" onclick="addNewTask(event)">
 
     <!-- EXERCISE 3
         Create a button "Remove Last Task" to trigger the method "removeLast"
         -->
-       
+
+        <input type="button" value="Remove Last" id="removeLast">
 
     <!-- EXERCISE 4
         Create a button "Remove First Task" to trigger the method "removeFirst"
         -->
-        <input type="button" value="Remove First">
+
+        <input type="button" value="Remove First" id="removeFirst">
+       
 
     <ul id="myTaskList"></ul>
 
@@ -81,25 +84,59 @@
                 - Use the document.createElement to create the new List Item
                 - Append the child to the UL
             */
-                let getList = document.getElementById('myTaskList');
+
+           //SELECTORS
+                let ul = document.getElementById('myTaskList'); ul.style.listStyle = "none";
+                let tasks = ul.children;
+                let newTaskInput = document.getElementById('newTask')
+                let addTaskBtn = document.getElementById('addTask')
+                let removeFirstBtn = document.getElementById('removeFirst')
+                let removeLastBtn = document.getElementById('removeLast')
+                let arrayOfTasks = []
+
+            //-------------------------------------------------------------------------------
+                
+               
 
             const addNewTask = function(){
-                getList.addEventListener
-
-
+            let newListItem = document.createElement('li')
+                newListItem.textContent = newTaskInput.value
+                arrayOfTasks.push(newListItem.textContent)
+                ul.appendChild(newListItem)
+                    newTaskInput.value = ''
+              
             }
 
       /* EXERCISE 6: 
                 Create a method "removeLast" which removes the last item from the task list
             */
 
+            removeLastBtn.addEventListener('click', ()=>{
+                let li = document.querySelector('li:last-child');
+                ul.removeChild(li)
+            })
+           
+
+
+
       /* EXERCISE 7: 
                 Create a method "removeFirst" which removes the first item from the task list
             */
 
+            removeFirstBtn.addEventListener('click', ()=>{
+                let li = document.querySelector('li:first-child');
+                ul.removeChild(li)
+            })
+
       /* EXERCISE 8: 
                Create a method "getTasksAsArray" which returns, and prints to the console an array containing the tasks as string
             */
+
+           
+            addTaskBtn.addEventListener('click', () =>{
+                console.log(arrayOfTasks)
+            })
+        
 
       /* EXERCISE 9:
                Create a method "changeTaskBackgroundColor" which takes the color from the color picker with an 
