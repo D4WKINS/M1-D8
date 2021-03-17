@@ -49,7 +49,7 @@
       then press "Add new task"</span><br><br>
 
     <input type="text" id="newTask">
-    <input type="button" value="Add new Task" id="addTask" onclick="addNewTask(event)">
+    <input type="button" value="Add new Task" id="addTask" onclick="addNewTask()">
 
     <!-- EXERCISE 3
         Create a button "Remove Last Task" to trigger the method "removeLast"
@@ -77,6 +77,7 @@
     </div>
         </main>
     <script>
+
       /* EXERCISE 5: 
                 Add a new task to the list.
                 Suggestion:
@@ -86,13 +87,13 @@
             */
 
            //SELECTORS
+           
                 let ul = document.getElementById('myTaskList'); ul.style.listStyle = "none";
-                let tasks = ul.children;
                 let newTaskInput = document.getElementById('newTask')
                 let addTaskBtn = document.getElementById('addTask')
                 let removeFirstBtn = document.getElementById('removeFirst')
                 let removeLastBtn = document.getElementById('removeLast')
-                let arrayOfTasks = []
+                let getTasksAsArray = []
 
             //-------------------------------------------------------------------------------
                 
@@ -101,7 +102,7 @@
             const addNewTask = function(){
             let newListItem = document.createElement('li')
                 newListItem.textContent = newTaskInput.value
-                arrayOfTasks.push(newListItem.textContent)
+                getTasksAsArray.push(newListItem.textContent)
                 ul.appendChild(newListItem)
                     newTaskInput.value = ''
               
@@ -134,7 +135,7 @@
 
            
             addTaskBtn.addEventListener('click', () =>{
-                console.log(arrayOfTasks)
+                console.log(getTasksAsArray)
             })
         
 
@@ -142,6 +143,15 @@
                Create a method "changeTaskBackgroundColor" which takes the color from the color picker with an 
                onchange event listener ad applies it as background to every list item
             */
+
+
+      const changeTaskBackgroundColor = function(){
+            let colorPicker = document.getElementById('colorPicker').value
+            let li = document.querySelectorAll('#myTaskList li');
+            for(let i = 0; i < li.length; i++){ colorPicker.onchange = li[i].style.backgroundColor = colorPicker }
+      }
+
+
 
       /* EXTRA */
 
